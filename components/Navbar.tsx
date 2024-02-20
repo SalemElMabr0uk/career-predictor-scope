@@ -9,9 +9,9 @@ import {useRouter} from 'next/navigation';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark flexBetween max-container padding-container relative z-30 py-5">
-
-        <Link href="/">
+    <nav className="max-w-screen-xl flex flex-wrap items-center space-x-5 mx-auto p-4">
+      
+      <div>  <Link href="/" className=' rtl:space-x-reverse flex items-center h-8 '>
            <Image
             src="/sqilco.svg"
             alt='Sqilco-logo'
@@ -19,14 +19,15 @@ const Navbar = () => {
             height={29}
            />
         </Link>
-
-
-        <Link href="/Register" aria-current="page">
-        <p className="navbar-brand" style={{ color: 'white', fontWeight: 'bold' }}>Register</p>
+    </div>
+      
+<div></div>
+      
+        <Link href="/Register"  aria-current="page">
+        <p style={{ color: 'white', fontWeight: 'bold' }}>Register</p>
         </Link>
 
-      
-        <Link className="navbar navbar-light bg-light" href="/Login" aria-current="page">
+        <Link className="navbar navbar-light bg-light justify-end" href="/Login" aria-current="page">
         <Button
                 type="button"
                 title="Login"
