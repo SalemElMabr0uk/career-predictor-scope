@@ -9,11 +9,6 @@ export default function Register() {
   return (
     <>
     <Navbar />
-   
-     
-
-
-
       <div className="grid justify-items-center grid-cols-2 justify-between ">
         <div className='justify-center pt-8 ml-24 '>
           <div className="grid  max-w-screen-xl p-5 m-5 justify-start">
@@ -96,7 +91,7 @@ export default function Register() {
 
       </div>
     
-  </>
+    </>
  
      
     )
