@@ -25,6 +25,7 @@ const Footer = () => {
               </FooterColumn>
             ))}
 
+
             <div className="flex flex-col gap-5">
               <FooterColumn title={FOOTER_CONTACT_INFO.title}>
                 {FOOTER_CONTACT_INFO.links.map((link) => (
