@@ -27,8 +27,34 @@ export default function Question() {
       question: 'What technology do you need ?',
       choices: ['Web App', 'Mobile App', 'Embedded software', 'Digital Marketing', 'Custom Enterprise Tools']
     }
-  ];
+  ];                
 
+  const sendResponsesToBackend = async () => {
+    try {
+      // Make a POST request to the backend endpoint
+      const response = await fetch('http://your-backend-api.com/responses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          questions: questions.map((question, index) => ({
+            question: question.question,
+            choice: question.choices[selectedChoices[index]]
+          }))
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send responses to the server');
+      }
+
+      console.log('Responses successfully sent to the server');
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+ 
   // State to keep track of selected choices for each question
   const [selectedChoices, setSelectedChoices] = useState(Array(questions.length).fill(null));
 
@@ -44,6 +70,10 @@ export default function Question() {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
+    else {
+      // If all questions are answered, send responses to the backend
+      sendResponsesToBackend();
+    }
   };
 
   // Render the current question and choices
@@ -54,7 +84,6 @@ export default function Question() {
       <Navbar />
       <div className='grid justify-items-center'>
         <h1 className='font-bold lg:text-5xl text-white p-8 mt-8 '>
-
           <span className="text-pink-10  justify-center">Beautiful choice!!</span>Let’s <span className="text-orange-10"> do it   </span>
         </h1>
         <div className="max-w-md mx-auto  p-8 rounded-lg shadow-lg justify-center ">
@@ -63,8 +92,8 @@ export default function Question() {
           <div className="space-y-4 p-2 px-2">
             {currentQuestion.choices.map((choice, choiceIndex) => (
               <button
-                key={choiceIndex}
-                className={`  justify-between text-black px-4 py-3 p-2 rounded-md bg-gradient-to-r from-pink-100 to-yellow-100 hover:from-yellow-500   hover:to-purple-400 ${selectedChoices[currentQuestionIndex] === choiceIndex && 'bg-blue-700'}`}
+                key={choiceIndex} // Ensure each button has a unique key
+                className={` m-2 justify-items-center text-black px-4 py-3 p-2 rounded-md bg-gradient-to-r from-pink-100 to-yellow-100 hover:from-yellow-500 hover:to-purple-400 ${selectedChoices[currentQuestionIndex] === choiceIndex && 'bg-blue-700'}`}
                 onClick={() => handleSelectChoice(choiceIndex)}
               >
                 {choice}
@@ -72,13 +101,7 @@ export default function Question() {
             ))}
           </div>
         </div>
-
-
-
       </div>
-
     </>
-
   );
 }
-
