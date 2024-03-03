@@ -11,10 +11,6 @@ export default function Login() {
   return (
     <>
       <Navbar />
-     
-       
-
-
 
         <div className="grid justify-items-center grid-cols-2 justify-between ">
           <div className='justify-center pt-8 ml-24 '>

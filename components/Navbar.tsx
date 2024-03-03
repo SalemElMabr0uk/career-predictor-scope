@@ -27,11 +27,11 @@ const Navbar = () => {
         <p style={{ color: 'white', fontWeight: 'bold' }}>Register</p>
         </Link>
 
-        <Link href="/Questions"  aria-current="page">
+       {/* <Link href="/Questions"  aria-current="page">
         <p style={{ color: 'white', fontWeight: 'bold' }}>Questions</p>
         </Link>
 
-
+        */}
         <Link className="navbar navbar-light bg-light justify-end" href="/Login" aria-current="page">
         <Button
                 type="button"
