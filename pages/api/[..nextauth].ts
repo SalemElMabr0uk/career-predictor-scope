@@ -6,17 +6,20 @@ export default NextAuth({
     Credentials({
       credentials: {
         email: {
-          label: "email",
+          label: "Email",
           type: "email",
-          placeholder: "johndoe@email.com",
+          placeholder: "johndoe@example.com",
         },
-        password: { label: "password", type: "password" },
+        password: {
+          label: "Password",
+          type: "password",
+        },
       },
       async authorize(credentials, req) {
         try {
           const { email, password } = credentials ?? {};
 
-          const res = await fetch("http://localhost:8000", {
+          const res = await fetch("http://localhost:8000/auth/login", {
             method: "POST",
             body: JSON.stringify({
               email,
@@ -26,25 +29,25 @@ export default NextAuth({
           });
 
           if (!res.ok) {
-            return null;
+            throw new Error("Invalid credentials");
           }
 
           const parsedResponse = await res.json();
           const jwt = parsedResponse.access_token;
-
-          // Ensure that the returned object matches the expected User type
           return {
-            id: parsedResponse.user.id, // Assuming the user object has an id
+            id: parsedResponse.user.id,
             name: parsedResponse.user.name, // Assuming the user object has a name
             email, // Assuming the user object has an email
             jwt,
           };
-        } catch (error) {
-          console.error("Authentication error:", error);
-          return null;
+        } catch (error:any) {
+          console.error("Authentication error:", error.message);
+          throw new Error("Authentication failed");
         }
       },
     }),
   ],
-  
+  pages: {
+    signIn: "/login", // Redirect to your custom login page
+  },
 });
