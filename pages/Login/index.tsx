@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import "../../app/globals.css"
+
 import IndianStudent from '../../public/indian-kid-books.png';
 import Navbar from '@/components/Navbar';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import { signIn } from 'next-auth/react';
+import "../../app/globals.css";
 
 export default function Login() {
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function Login() {
     if (result?.error) {
       setError(result.error);
     } else {
-      console.log("err");
+     
     }
   };
 

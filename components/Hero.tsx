@@ -2,8 +2,9 @@ import Image from 'next/image'
 import React from 'react'
 import Button from './Button'
 import StudentImage from '../public/student-photo.png'
-import IndianStudent from '../public/indian-kid-books.png'
 import Link from 'next/link'
+import "../app/globals.css"
+
 
 const Hero = () => {
   return (
@@ -30,7 +31,7 @@ const Hero = () => {
             <span>The function of education is to teach one to think intensively and to think critically. Intelligence plus character - that is the goal of true education.</span><br/><span className='text-gray-40'> - Martin Luther King Jr.</span>
             </p>
 
-            <Link href="/loginflow"  className='flex  w-full gap-3 mt-6 sm:flex-row'>
+            <Link href="/dynamiccontent/LoginFlow"  className='flex  w-full gap-3 mt-6 sm:flex-row'>
                 <Button 
                     type='button'
                     title='Explore Programs'

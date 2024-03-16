@@ -19,7 +19,7 @@ export default NextAuth({
         try {
           const { email, password } = credentials ?? {};
 
-          const res = await fetch("http://localhost:8000/auth/login", {
+          const res = await fetch("http://localhost:8000/api/login", {
             method: "POST",
             body: JSON.stringify({
               email,
