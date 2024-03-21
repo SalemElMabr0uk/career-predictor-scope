@@ -39,17 +39,20 @@ const Hero = () => {
                     
                 />
             </Link>
+            
+           
         </div>
 
         {/* RIGHT */}
 
+
         <div className='relative flex flex-1 items-start'>
-            <div className='h-full w-full relative z-20 w-[268px] flex-col gap-8 rounded-3xl px-7 py-8 '>
+            <div className='h-full relative z-20  flex-col gap-8 rounded-3xl px-7 py-8 '>
                     <Image
                         src={StudentImage}
                         alt="map"
-                        // width={35}
-                        // height={35}
+                         width={3500}
+                         height={3500}
                     />
             </div>
         </div>
