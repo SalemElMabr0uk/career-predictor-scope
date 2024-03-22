@@ -32,7 +32,7 @@ const LoginFlow: React.FC = () => {
         <h1 className='bg-gradient-to-r text-6xl text-center font-bold from-pink-300 via-orange-500 to-pink-200 inline-block text-transparent bg-clip-text'>
           WELCOME WITH ROADMAPS
         </h1>
-        <h3 className='text-white  text-center p-3 '>With Roadmap you can be precise with your journey.</h3>
+        <h3 className='text-white  text-center p-4 m-4 '>With Roadmap you can be precise with your journey.</h3>
       </div>
 
       {/* Random choices  when the component mounts or updates*/}
