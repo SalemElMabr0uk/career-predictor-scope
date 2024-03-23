@@ -1,13 +1,25 @@
 import React from 'react';
 import { Choices } from '../_const/choices';
 
+interface PageContent {
+  title: string;
+  periode: string;
+  mainLine: string;
+  points: string[];
+}
+
+interface Choice {
+  id: number;
+  image: string;
+  pageContent: PageContent;
+}
 
 interface DetailPageProps {
   id: number;
 }
 
-const DetailPage: React.FC<DetailPageProps> = ({ id }) => {
-  const selectedChoice = Choices.find((choice) => choice.id === id);
+const DetailPage: React.FC<any> = ({ id }) => {
+  const selectedChoice: Choice | undefined = Choices.find(choice => choice.id === id);
 
   if (!selectedChoice) {
     return <div>Choice not found</div>;
@@ -19,25 +31,22 @@ const DetailPage: React.FC<DetailPageProps> = ({ id }) => {
         <h1 className='font-bold lg:text-5xl text-white justify-center'>
           <span className="text-pink-10 m-4 p-2"> {selectedChoice.pageContent.title} </span>
         </h1>
-        
-
         <p className=" text-xl font-semibold mb-2 p-4">{selectedChoice.pageContent.periode}</p>
         <p className="text-lg mb-4">{selectedChoice.pageContent.mainLine}</p>
         <ul className="list-disc list-inside text-lg">
-        <h2>points :</h2>
-        
+          <h2>points :</h2>
           {selectedChoice.pageContent.points.map((point: string, index: number) => (
-             <h3 key={index}>{point}</h3> 
+            <li key={index}>{point}</li>
           ))}
         </ul>
       </div>
       <div className="flex-1 items-start hidden md:block ">
         <div className="h-full w-full relative z-20 flex-col ">
-          <img src={selectedChoice.image} alt={`${selectedChoice.title} image`} className="w-full h-35 object-cover mb-2 rounded data-twe-animation-delay" />
+          <img src={selectedChoice.image} alt={`${selectedChoice.pageContent.title} image`} className="w-full h-35 object-cover mb-2 rounded data-twe-animation-delay" />
         </div>
       </div>
     </div>
   );
 };
 
-export default DetailPage;
+export default DetailPage; 
