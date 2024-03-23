@@ -7,6 +7,7 @@ import { Choices } from '../_const/choices';
 
 
 const LoginFlow: React.FC = () => {
+  //
   const [showFullMainLine] = useState(false);
   const [randomIndex, setRandomIndex] = useState<number | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
