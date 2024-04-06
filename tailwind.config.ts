@@ -36,6 +36,8 @@ module.exports = {
         pink:{
           10: '#fe8ece',
         },
+        sqilcoPink:'#FF8ED0',
+        sqilcoOrange:'#FB8971'
       },
       
       backgroundImage: {
@@ -44,6 +46,8 @@ module.exports = {
         'feature-bg': "url('/feature-bg.png')",
         pattern: "url('/pattern.png')",
         'pattern-2': "url('/pattern-bg.png')",
+
+        'primary-color':"linear"
       },
       screens: {
         xs: '400px',
