@@ -1,19 +1,3 @@
-<svg width="125" height="124" viewBox="0 0 125 124" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_2106_18151)">
-<rect x="30" y="12" width="64.1549" height="64.0013" rx="15" fill="white" shape-rendering="crispEdges"/>
-<rect x="30.5" y="12.5" width="63.1549" height="63.0013" rx="14.5" stroke="#E0E0E9" shape-rendering="crispEdges"/>
-<path d="M78.1553 43.9991C78.1553 35.1625 70.9918 27.9991 62.1553 27.9991C53.3187 27.9991 46.1553 35.1625 46.1553 43.9991C46.1553 51.9851 52.0062 58.6044 59.6553 59.8047V48.6241H55.5928V43.9991H59.6553V40.4741C59.6553 36.4641 62.044 34.2491 65.6987 34.2491C67.4492 34.2491 69.2803 34.5616 69.2803 34.5616V38.4991H67.2627C65.2751 38.4991 64.6553 39.7324 64.6553 40.9977V43.9991H69.0928L68.3834 48.6241H64.6553V59.8047C72.3043 58.6044 78.1553 51.9851 78.1553 43.9991Z" fill="#1877F2"/>
-</g>
-<defs>
-<filter id="filter0_d_2106_18151" x="0" y="0" width="124.155" height="124" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="18"/>
-<feGaussianBlur stdDeviation="15"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.266667 0 0 0 0 0.380392 0 0 0 0 0.94902 0 0 0 0.11 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2106_18151"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2106_18151" result="shape"/>
-</filter>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+<path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"></path><path fill="#fff" d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"></path>
 </svg>

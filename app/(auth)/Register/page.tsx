@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from 'next/link';
-import { AppleIcon, FacebookIcon, GoogleIcon, RegisterIllustration } from '@/components/svgs';
+import { AppleIcon, FacebookIcon, GithubIcon, GoogleIcon, RegisterIllustration } from '@/components/svgs';
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required('First Name is required'),
@@ -110,11 +110,12 @@ export default function Register() {
 </Formik>
 
           <div className="text-center text-white font-semibold m-2 josefin-sans-font">Or continue with</div>
-          <div className='other-signin-options flex justify-around items-center '>
+          <div className='other-signin-options flex justify-center gap-4 items-center w-full'>
             {/* Your social login icons */}
-            <GoogleIcon/>
-              <FacebookIcon/>
-              <AppleIcon/>
+            <GoogleIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+            <GithubIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+              <FacebookIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+              <AppleIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
           </div>
           <span className="text-white text-lg">Already A Member? <Link href="/Login" className="text-gradient-pink-orange font-semibold">Log In</Link></span>
         </div>

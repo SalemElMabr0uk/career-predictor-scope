@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { AppleIcon, FacebookIcon, GoogleIcon, LoginIllustration } from '@/components/svgs';
+import { AppleIcon, FacebookIcon, GithubIcon, GoogleIcon, LoginIllustration } from '@/components/svgs';
 
 
   const validationSchema = Yup.object().shape({
@@ -85,11 +85,12 @@ export default function Login() {
 </Formik>
 
           <div className="text-center text-white font-semibold m-2 josefin-sans-font">Or continue with</div>
-          <div className='other-signin-options flex justify-around items-center '>
+          <div className='other-signin-options flex justify-center gap-4 items-center w-full'>
             {/* Your social login icons */}
-            <GoogleIcon/>
-              <FacebookIcon/>
-              <AppleIcon/>
+            <GoogleIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+            <GithubIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+              <FacebookIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+              <AppleIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
           </div>
           <span className="text-white text-lg">New here? <Link href="/Register" className="text-gradient-pink-orange font-semibold">Sign Up</Link></span>
         </div>
