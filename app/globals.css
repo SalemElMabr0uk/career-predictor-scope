@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -16,12 +18,22 @@ body {
   background-color: #151523;
 }
 
+.josefin-sans-font {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+}
 
 @layer utilities {
-
+  .text-gradient-pink-orange {
+    background: linear-gradient(180deg, #FF8ED0, #FB8971);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
   .colour_pink_orange{
     @apply [background:linear-gradient(90deg,rgb(255,141.95,207.77)_0%,rgb(251.16,137.52,111.35)_100%)]
   }
+ 
 
   .btn_white { 
     @apply  border-white bg-white px-8 py-3 text-green-50

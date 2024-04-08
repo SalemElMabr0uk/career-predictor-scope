@@ -1,106 +1,113 @@
 "use client"
 
 import Link from 'next/link';
-import Image from 'next/image';
-import IndianStudent from '../../../public/indian-kid-books.png';
-import Cookies from 'js-cookie';
 import { signIn } from 'next-auth/react';
-
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as Yup from 'yup';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { AppleIcon, FacebookIcon, GithubIcon, GoogleIcon, LoginIllustration } from '@/components/svgs';
 
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+    password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
+  });
 export default function Login() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const token = Cookies.get('jwtToken');
-    if (token) {
-      router.push('/');
-    }
-  }, []);
-
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const result = await signIn('credentials', {
-      redirect: false,
-      email,
-      password,
-    });
-
-    if (result?.error) {
-      setError(result.error);
-    } else {
-     
-    }
+  const[showPassword,setShowPassword]=useState(false);
+  const handleSubmit = async (values:any, actions:any) => {
+    // Handle form submission
+    console.log(values);
   };
+
+  const TogglePassword = () => {
+    // Toggle password visibility
+    setShowPassword(!showPassword)
+  };
+
+  
+
+  
+
 
   return (
     <>
-
-      <div className="grid justify-items-center grid-cols-1 md:grid-cols-2 gap-4">
-
-        <div className="justify-center pt-8 md:ml-24">
-          <div className="max-w-screen-md p-5 m-5 justify-start">
-            <h1 className="font-bold text-2xl text-white text-center md:text-left">
-              <span className="text-pink-10">Log </span>In To{' '}
-              <span className="text-orange-10">Your Account</span>
-            </h1>
-            <span className="text-red-100 text-center md:text-left block">
-              Already A Member?{' '}
-              <Link href="/Register" className="text-blue-500 underline">
-                Sign in
-              </Link>
-            </span>
-          </div>
-
-          <div className="p-6 pt-10 justify-center rounded shadow-md w-full md:w-auto">
-            <h1 className="text-4xl text-center font-semibold mb-9 text-red-100">Login</h1>
-
-            <form onSubmit={handleLogin}>
-              <input
-                type="text"
-                className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-
-              <input
-                type="password"
-                className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400"
-                placeholder="Password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-
-              <div className="bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-yellow-500 hover:to-purple-400">
-                <button type="submit" className="w-full text-white py-2 rounded-full">
-                  Login
-                </button>
-              </div>
-            </form>
-
-            <button className="w-full bg-black text-white py-2 rounded mb-4">Sign In with Github</button>
-
-            <div className="text-center text-gray-500 mb-4">- OR -</div>
-
-            <Link href="/Register" className="block text-center text-blue-500 hover:underline mb-2">
-              Register Here
-            </Link>
-          </div>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-7xl p-3">
+      <div className="flex flex-col justify-center w-full">
+        <div className="mx-auto">
+          <h1 className="font-bold text-4xl lg:text-5xl text-white my-4">
+            Log in to your <span className="text-gradient-pink-orange">Account</span>
+          </h1>
         </div>
-
-        <div className="flex-1 items-start hidden md:block">
-          <div className="h-full w-full relative z-20 flex-col gap-8 rounded-3xl px-2 py-8">
-            <Image src={IndianStudent} alt="Indian Student" width={600} height={800} />
-          </div>
+        <div className="flex items-center justify-center flex-col p-6 pt-10 rounded w-full md:max-w-md mx-auto">
+        <Formik
+  initialValues={{
+    email: '',
+    password: '',
+  }}
+  validationSchema={validationSchema}
+  onSubmit={handleSubmit}
+>
+  {({ errors, touched }) => (
+    <Form className='w-full'>
+  
+      <Field
+        type="text"
+        name="email"
+        className="w-full rounded-lg josefin-sans-font text-lg px-3 py-3 mb-4 bg-[#1F1F3B] border-gray-600 border-2 focus:outline-none focus:border-sqilcoPink text-white"
+        placeholder="Email"
+      />
+      {errors.email && touched.email && (
+        <div className="text-red-500 mb-4">{errors.email}</div>
+      )}
+      <div className='relative'>
+        <Field
+          type={`${showPassword ? "text" : "password"}`}
+          name="password"
+          className="w-full josefin-sans-font text-lg rounded-lg px-3 py-3 mb-4 bg-[#1F1F3B] border-gray-600 border-2 focus:outline-none focus:border-sqilcoPink text-white"
+          placeholder="Password"
+        />
+        <div className="absolute right-0 top-3 pr-3 pt-1 text-xl text-white" onClick={TogglePassword}>
+          {showPassword ? <FaEye /> : <FaEyeSlash />}
         </div>
       </div>
+      {errors.password && touched.password && (
+        <div className="text-red-500 mb-4">{errors.password}</div>
+      )}     
+   
+      <button type="submit" className="w-full text-lg text-white py-3 font-semibold rounded-lg bg-gradient-to-r from-sqilcoPink to-sqilcoOrange hover:from-sqilcoOrange hover:to-sqilcoPink">
+        Login to my account
+      </button>
+    </Form>
+  )}
+</Formik>
+
+          <div className="text-center text-white font-semibold m-2 josefin-sans-font">Or continue with</div>
+          <div className='other-signin-options flex justify-center gap-4 items-center w-full'>
+            {/* Your social login icons */}
+            <GoogleIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+            <GithubIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+              <FacebookIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+              <AppleIcon className="w-[60px] h-[60px] bg-white p-3 rounded-lg hover:scale-105 transition-all cursor-pointer"/>
+          </div>
+          <span className="text-white text-lg">New here? <Link href="/Register" className="text-gradient-pink-orange font-semibold">Sign Up</Link></span>
+        </div>
+      </div>
+      <div className="justify-center items-center hidden md:block">
+        {/* Your image or illustration */}
+        <div className="w-full">
+            {/* <Image
+              src={IndianStudent}
+              alt="Indian Student"
+              width={600}
+              height={800}
+            /> */}
+            <LoginIllustration />
+          </div>
+      </div>
+    </div>
     </>
   );
 }
